@@ -1,0 +1,31 @@
+{
+  "name": "handsome-autocomplete",
+  "version": "1.0.0",
+  "description": "A simple angularjs autocomplete directive",
+  "scripts": {
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheHandsomeCoder/handsome-autocomplete.git"
+  },
+  "author": "TheHandsomeCoder",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheHandsomeCoder/handsome-autocomplete/issues"
+  },
+  "homepage": "https://github.com/TheHandsomeCoder/handsome-autocomplete",
+  "devDependencies": {
+    "autoprefixer": "^5.2.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-load-plugins": "^1.0.0-rc.1",
+    "gulp-sass": "^2.0.1",
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.5",
+    "gulp-webserver": "^0.9.1",
+    "rimraf": "^2.4.0",
+    "run-sequence": "^1.1.1"
+  }
+}
