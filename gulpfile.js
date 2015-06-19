@@ -1,6 +1,7 @@
 var gulp     = require('gulp'),
     $        = require('gulp-load-plugins')(),
     rimraf   = require('rimraf'),
+    ghPages = require('gulp-gh-pages'),
     sequence = require('run-sequence');
 
 var paths = {
@@ -102,4 +103,9 @@ gulp.task('server', function() {
             open: true
         }))
     ;
+});
+
+gulp.task('deploy', function(){
+    return gulp.src('./app/**/*')
+        .pipe(ghPages());
 });
