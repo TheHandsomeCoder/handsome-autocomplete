@@ -2,7 +2,7 @@
   "name": "handsome-autocomplete",
   "version": "1.0.0",
   "ignore": [],
-  "homepage": "http://justgoscha.github.io/allmighty-autocomplete/",
+  "homepage": "https://github.com/TheHandsomeCoder/handsome-autocomplete",
   "authors": [
     "Scott O'Malley <scottyomalley@gmail.com>"
   ],
@@ -13,5 +13,5 @@
     "typeahead"
   ],
   "license": "MIT",
-  "main": ["./script/autocomplete.js", "./style/autocomplete.css"]
+  "main": ["./dist/autocomplete.js", "./dist/autocomplete.css"]
 }
