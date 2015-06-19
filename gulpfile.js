@@ -19,13 +19,13 @@ gulp.task('default', function () {
     sequence('build', 'server');
 
     // Watch Sass
-    gulp.watch(['./src/scss/**/*'], ['sass']);
+    gulp.watch(['src/scss/**/*'], ['sass']);
 
     // Watch app folder
-    gulp.watch(['./src/app/**/*'], ['app']);
+    gulp.watch(['src/app/**/*'], ['app']);
 
     // Watch app templates
-    gulp.watch(['./src/js/*.js'], ['uglify']);
+    gulp.watch(['src/js/*.js'], ['uglify']);
 
 });
 
