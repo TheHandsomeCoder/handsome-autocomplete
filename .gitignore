@@ -7,7 +7,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
-app
+app/
 node_modules
 .idea
 *.iml
