@@ -14,7 +14,7 @@ angular.module('autocomplete', [])
       onType: '=onType',
       onSelect: '=onSelect',
       autocompleteRequired: '=',
-      labelForObject: '='
+      labelForObject: '=labelForObject'
     },
     controller: ['$scope', function($scope){
       // the index of the suggestions that's currently selected
