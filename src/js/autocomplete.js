@@ -1,8 +1,9 @@
-/* --- Made by justgoscha and licensed under MIT license --- */
+/* --- Made by TheHandsomeCoder and licensed under MIT license --- */
 
-var app = angular.module('autocomplete', []);
+angular.module('autocomplete', [])
 
-app.directive('autocomplete', function() {
+
+.directive('autocomplete', function() {
   var index = -1;
 
   return {
@@ -12,7 +13,8 @@ app.directive('autocomplete', function() {
       suggestions: '=data',
       onType: '=onType',
       onSelect: '=onSelect',
-      autocompleteRequired: '='
+      autocompleteRequired: '=',
+      labelForObject: '='
     },
     controller: ['$scope', function($scope){
       // the index of the suggestions that's currently selected
@@ -94,16 +96,25 @@ app.directive('autocomplete', function() {
         $scope.setIndex(-1);
       };
 
+      $scope.showCustomLabelForObject = function(suggestion){
+
+        if($scope.labelForObject){
+          return($scope.labelForObject(suggestion));
+        }
+        else {
+          return suggestion;
+        }
+      }
 
     }],
-    link: function(scope, element, attrs){
+    link: function(scope, element, attrs, modelCtrl){
 
       setTimeout(function() {
         scope.initLock = false;
         scope.$apply();
       }, 250);
 
-      var attr = '';
+      var attr = '';   
 
       // Default atts
       scope.attrs = {
@@ -257,13 +268,13 @@ app.directive('autocomplete', function() {
               val="{{ suggestion }}"\
               ng-class="{ active: ($index === selectedIndex) }"\
               ng-click="select(suggestion)"\
-              ng-bind-html="suggestion | highlight:searchParam"></li>\
+              ng-bind-html="showCustomLabelForObject(suggestion) | highlight:searchParam"></li>\
           </ul>\
         </div>'
   };
-});
+})
 
-app.filter('highlight', ['$sce', function ($sce) {
+.filter('highlight', ['$sce', function ($sce) {
   return function (input, searchParam) {
     if (typeof input === 'function') return '';
     if (searchParam) {
@@ -278,9 +289,9 @@ app.filter('highlight', ['$sce', function ($sce) {
     }
     return $sce.trustAsHtml(input);
   };
-}]);
+}])
 
-app.directive('suggestion', function(){
+.directive('suggestion', function(){
   return {
     restrict: 'A',
     require: '^autocomplete', // ^look for controller on parents element
@@ -296,3 +307,6 @@ app.directive('suggestion', function(){
     }
   };
 });
+
+
+

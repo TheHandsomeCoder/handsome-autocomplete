@@ -57,10 +57,10 @@ gulp.task('uglify', function(cb) {
 
     // App JavaScript
     gulp.src(paths.app)
-        .pipe($.uglify()
-        .on('error', function(e) {
-         console.log(e);
-        }))
+        // .pipe($.uglify()
+        // .on('error', function(e) {
+        //  console.log(e);
+        // }))
         .pipe($.concat('autocomplete.js'))
         .pipe(gulp.dest('./dist/'))
         .pipe(gulp.dest('./app/js'));

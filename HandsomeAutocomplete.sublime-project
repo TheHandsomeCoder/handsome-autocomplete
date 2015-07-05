@@ -1,0 +1,19 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Users/scottomalley/Programming/Javascript/handsome-autocomplete"
+		}
+	],
+
+	 "ternjs": {
+        "exclude": ["app/**", "dist/**","node_modules/**"],
+        "libs": [],
+        "plugins": {
+            "angular": {             
+            }
+        }
+
+    }
+
+}

@@ -158,9 +158,6 @@ div{
   text-align: center;
 }
 
-body{
-  background: url('../sprinkles.png') repeat;
-}
 .main{
   display: inline-block;
   padding: 2em;
