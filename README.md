@@ -5,8 +5,6 @@ Simple to use autocomplete directive in a module for AngularJS!
 Supports arrow keys to traverse suggestions as well as mouse input.
 You can load the suggestions from a remote REST API, it also supports promises.
 
-Checkout [the demo](http://justgoscha.github.io/allmighty-autocomplete/) to see what it does.
-
 ## Setup
 
 To use it you need of course AngularJS, so make sure it is loaded first. I always like to use Google's CDN for that:
@@ -47,6 +45,8 @@ You can also pass a function that receives changes with the `on-type` attribute.
 `on-type` : *(optional)* Pass a function that will receive changes, when somebody types something. It passes the full string for any character typed or deleted. You can use that for example to update the array that you passed in data.
 
 `on-select` : *(optional)* Pass a function that will receive changes, when a suggestion is selected. It passes the full string of the suggestion.
+
+`label-for-object` : *(optional)* Pass a function that will override the default label for each entry in the autocomplete list. The function should take an object parameter. 
 
 `click-activation` : *(optional)* When `true`, the suggestion box opens on click (unfortunately onfoucs is not implemented properly in most browsers right now). By default it is only activated, when you start typing something.
 

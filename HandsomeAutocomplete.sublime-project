@@ -7,7 +7,7 @@
 	],
 
 	 "ternjs": {
-        "exclude": ["app/**", "dist/**","node_modules/**"],
+        "include": ["src"],
         "libs": [],
         "plugins": {
             "angular": {             

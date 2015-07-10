@@ -14,7 +14,7 @@ angular.module('autocomplete', [])
       onType: '=onType',
       onSelect: '=onSelect',
       autocompleteRequired: '=',
-      labelForObject: '=labelForObject'
+      displayAs: '='
     },
     controller: ['$scope', function($scope){
       // the index of the suggestions that's currently selected
@@ -85,8 +85,12 @@ angular.module('autocomplete', [])
       // selecting a suggestion with RIGHT ARROW or ENTER
       $scope.select = function(suggestion){
         if(suggestion){
-          $scope.searchParam = suggestion;
-          $scope.searchFilter = suggestion;
+          $scope.searchParam = suggestion.attributes.val.value;
+          $scope.searchFilter = suggestion.innerText;
+
+          console.log(element);
+
+          
           if($scope.onSelect)
             $scope.onSelect(suggestion);
         }
@@ -98,8 +102,8 @@ angular.module('autocomplete', [])
 
       $scope.showCustomLabelForObject = function(suggestion){
 
-        if($scope.labelForObject){
-          return($scope.labelForObject(suggestion));
+        if($scope.displayAs){
+          return($scope.displayAs(suggestion));
         }
         else {
           return suggestion;
@@ -225,7 +229,7 @@ angular.module('autocomplete', [])
             index = scope.getIndex();
             // scope.preSelectOff();
             if(index !== -1) {
-              scope.select(angular.element(angular.element(this).find('li')[index]).text());
+              scope.select(angular.element(angular.element(this).find('li')[index])[0]);
               if(keycode == key.enter) {
                 e.preventDefault();
               }
@@ -255,6 +259,7 @@ angular.module('autocomplete', [])
         <div class="autocomplete {{ attrs.class }}" id="{{ attrs.id }}">\
           <input\
             type="text"\
+            value="searchFilter"\
             ng-model="searchParam"\
             placeholder="{{ attrs.placeholder }}"\
             class="{{ attrs.inputclass }}"\

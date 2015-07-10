@@ -10,6 +10,9 @@ var paths = {
     ],
     app:[
         "src/js/*.js"
+    ],
+    bower:[
+        "bower_components/angular/angular.js"
     ]
 };
 
@@ -31,7 +34,7 @@ gulp.task('default', function () {
 
 // Builds your entire app once, without starting a server
 gulp.task('build', function(cb) {
-    sequence('clean','sass','uglify','app', function() {
+    sequence('clean','sass','uglify','copy-bower','app', function() {
         console.log("Successfully built.");
         cb();
     });
@@ -67,7 +70,15 @@ gulp.task('uglify', function(cb) {
     cb();
 });
 
-// Compiles and copies the Foundation for Apps JavaScript, as well as your app's custom JS
+gulp.task('copy-bower', function(cb) {
+
+    // App JavaScript
+    gulp.src(paths.bower)
+      .pipe(gulp.dest('./app/js'));
+    cb();
+});
+
+// Compiles and copies your app's custom JS
 gulp.task('app', function(cb) {
 
     // App JavaScript
