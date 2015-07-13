@@ -13,5 +13,11 @@
     "typeahead"
   ],
   "license": "MIT",
-  "main": ["./dist/autocomplete.js", "./dist/autocomplete.css"]
+  "main": [
+    "./dist/autocomplete.js",
+    "./dist/autocomplete.css"
+  ],
+  "dependencies": {
+    "angularjs": "~1.4.2"
+  }
 }

@@ -11,3 +11,5 @@ node_modules
 .idea
 *.iml
 .publish
+app
+bower_components

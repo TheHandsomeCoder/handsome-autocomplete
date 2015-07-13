@@ -23,6 +23,11 @@ angular.module('autocomplete', [])
 
       $scope.initLock = true;
 
+        if(!$scope.searchParam)
+        {
+            $scope.searchParam = "";
+        }
+
       // set new index
       $scope.setIndex = function(i){
         $scope.selectedIndex = parseInt(i);
@@ -122,10 +127,10 @@ angular.module('autocomplete', [])
     }],
     link: function(scope, element, attrs, ngModel){
 
-//       setTimeout(function() {
-//       scope.initLock = false;
-//       scope.$apply();
-//       }, 250);
+       setTimeout(function() {
+       scope.initLock = false;
+       scope.$apply();
+       }, 250);
 
       var attr = '';
 
