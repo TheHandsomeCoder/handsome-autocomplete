@@ -19,13 +19,17 @@ app.factory('MovieRetriever', function($http, $q, $timeout){
 app.controller('MyCtrl', function($scope, MovieRetriever){
 
   $scope.movies = MovieRetriever.getmovies("...");
+  
+  $scope.getmovies = function(){
+    return $scope.movies;
+  }
 
   $scope.customLabel = function(suggestion){
     return suggestion.name + ' ' + suggestion.club;
   }
 
   $scope.doSomething = function(typedthings){
-    console.log("Do something likea console log: " + typedthings );
+    console.log("Do something like reload data with this: " + typedthings );
   }
 
   $scope.doSomethingElse = function(suggestion){
