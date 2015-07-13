@@ -8,6 +8,7 @@ angular.module('autocomplete', [])
 
   return {
     restrict: 'E',
+    require: 'ngModel',
     scope: {
       searchParam: '=ngModel',
       suggestions: '=data',
@@ -83,14 +84,13 @@ angular.module('autocomplete', [])
       $scope.preSelectOff = this.preSelectOff;
 
       // selecting a suggestion with RIGHT ARROW or ENTER
-      $scope.select = function(suggestion){
-        if(suggestion){
-          $scope.searchParam = suggestion.attributes.val.value;
-          $scope.searchFilter = suggestion.innerText;
+      $scope.select = function(index){
+        if(angular.isDefined(index)){
 
-          console.log(element);
+          var suggestion = $scope.filteredSuggestions[index];
+          $scope.searchParam = suggestion;
+          $scope.searchFilter = $scope.showCustomLabelForObject(suggestion);
 
-          
           if($scope.onSelect)
             $scope.onSelect(suggestion);
         }
@@ -100,25 +100,34 @@ angular.module('autocomplete', [])
         $scope.setIndex(-1);
       };
 
-      $scope.showCustomLabelForObject = function(suggestion){
+        // selecting a suggestion with RIGHT ARROW or ENTER
+        $scope.clickSelect = function(index){
+            $scope.select(angular.element(angular.element(this).find('li')[index])[0]);
+        };
 
-        if($scope.displayAs){
-          return($scope.displayAs(suggestion));
+
+
+      $scope.showCustomLabelForObject = function(suggestion){
+        if(suggestion) {
+            if ($scope.displayAs) {
+                return($scope.displayAs(suggestion));
+            }
+            else {
+                return suggestion;
+            }
         }
-        else {
-          return suggestion;
-        }
+        return null;
       }
 
     }],
-    link: function(scope, element, attrs, modelCtrl){
+    link: function(scope, element, attrs, ngModel){
 
-      setTimeout(function() {
-        scope.initLock = false;
-        scope.$apply();
-      }, 250);
+//       setTimeout(function() {
+//       scope.initLock = false;
+//       scope.$apply();
+//       }, 250);
 
-      var attr = '';   
+      var attr = '';
 
       // Default atts
       scope.attrs = {
@@ -229,7 +238,7 @@ angular.module('autocomplete', [])
             index = scope.getIndex();
             // scope.preSelectOff();
             if(index !== -1) {
-              scope.select(angular.element(angular.element(this).find('li')[index])[0]);
+              scope.select(index);
               if(keycode == key.enter) {
                 e.preventDefault();
               }
@@ -255,10 +264,11 @@ angular.module('autocomplete', [])
 
       });
     },
-    template: '\
+    template:'\
         <div class="autocomplete {{ attrs.class }}" id="{{ attrs.id }}">\
-          <input\
+        <input\
             type="text"\
+            formatter\
             value="searchFilter"\
             ng-model="searchParam"\
             placeholder="{{ attrs.placeholder }}"\
@@ -268,11 +278,11 @@ angular.module('autocomplete', [])
           <ul ng-show="completing && (suggestions | filter:searchFilter).length > 0">\
             <li\
               suggestion\
-              ng-repeat="suggestion in suggestions | filter:searchFilter | orderBy:\'toString()\' track by $index"\
+              ng-repeat="suggestion in (suggestions | filter:searchFilter | orderBy:\'toString()\') as filteredSuggestions track by $index"\
               index="{{ $index }}"\
-              val="{{ suggestion }}"\
+              model="{{ suggestion }}"\
               ng-class="{ active: ($index === selectedIndex) }"\
-              ng-click="select(suggestion)"\
+              ng-click="select($index)"\
               ng-bind-html="showCustomLabelForObject(suggestion) | highlight:searchParam"></li>\
           </ul>\
         </div>'
@@ -309,6 +319,19 @@ angular.module('autocomplete', [])
       element.bind('mouseleave', function() {
         autoCtrl.preSelectOff();
       });
+    }
+  };
+})
+
+.directive('formatter', function(){
+  return {
+    restrict: 'A',
+    require: 'ngModel', // ^look for controller on parents element
+    link: function(scope, element, attrs, ngModel){
+
+        ngModel.$formatters.push(function(value){
+            return scope.showCustomLabelForObject(value);
+        });
     }
   };
 });

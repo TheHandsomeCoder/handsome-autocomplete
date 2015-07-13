@@ -12,7 +12,7 @@ var paths = {
         "src/js/*.js"
     ],
     bower:[
-        "bower_components/angular/angular.js"
+        "bower_components/angularjs/angular.js"
     ]
 };
 
