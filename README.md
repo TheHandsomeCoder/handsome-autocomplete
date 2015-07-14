@@ -3,17 +3,30 @@ handsome-autocomplete
 
 Simple to use autocomplete directive in a module for AngularJS!
 Supports arrow keys to traverse suggestions as well as mouse input.
-You can load the suggestions from a remote REST API, it also supports promises.
 
-## Setup
+## Coming Soon
+* Load the suggestions from a remote REST API, supporting promises.
 
-To use it you need of course AngularJS, so make sure it is loaded first. I always like to use Google's CDN for that:
 
-```html
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+## Setup For Dev
+First clone the repo from git
+```git
+  git clone https://github.com/TheHandsomeCoder/handsome-autocomplete.git
+```
+Next install the dependancies you will need node installed
+```
+ npm install
+ bower install
 ```
 
-Also you should load the stylesheet of the autocomplete:
+Finally build the project and start the server
+```javascript
+ gulp
+```
+
+##Use in existing project
+
+Load the stylesheet of the autocomplete:
 
 ```html
   <link rel="stylesheet" href="style/autocomplete.css">
@@ -95,29 +108,4 @@ JavaScript:
 	});
 
 ```
-
-## Change log
-
-***07.03.2014***
-+ `attr-input-class` & `attr-input-id` allow you to choose class and id of the input field. Handy when wanting to add bootstrap styles to the input field
-
-***25.02.2014***
-+ `attr-class` & `attr-id` allow you to choose class and id of the div where the autocomplete is contained, makes it more customizable
-+ `placeholder` renamed into `attr-placeholder`
-
-***14.02.2014***
-+ got rid of jQuery dependency
-
-***13.02.2014***
-
-+ ng-model can now be used outside to obtain the current search parameter
-+ hiding suggestions on blur
-
-***31.01.2014***
-+ Stop showing suggestions on pushing escape
-+ select if suggestions should be shown after clicking on input with new parameter `click-activation`
-+ Added customizable placeholders for input line
-+ FIXED multiple autocomplete directives in one controller are now possible and behave as expected
-
-
 
