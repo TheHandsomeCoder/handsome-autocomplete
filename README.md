@@ -2,7 +2,7 @@ handsome-autocomplete
 ======================
 
 Simple to use autocomplete directive in a module for AngularJS!
-Supports arrow keys to traverse suggestions as well as mouse input.
+Supports arrow keys to traverse suggestions as well as mouse input. Checkout the [demo](http://thehandsomecoder.github.io/handsome-autocomplete/)
 
 ## Coming Soon
 * Load the suggestions from a remote REST API, supporting promises.
