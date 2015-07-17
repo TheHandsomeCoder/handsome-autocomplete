@@ -13,10 +13,10 @@
     "typeahead"
   ],
   "repository": {
-  "type": "git",
-  "url": "git://github.com/TheHandsomeCoder/handsome-autocomplete.git"
-}
-  "license": "MIT",
+    "type": "git",
+    "url": "git://github.com/TheHandsomeCoder/handsome-autocomplete.git"
+  },
+  "license" : "MIT",
   "main": [
     "./dist/autocomplete.js",
     "./dist/autocomplete.css"
