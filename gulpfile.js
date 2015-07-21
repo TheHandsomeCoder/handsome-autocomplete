@@ -91,6 +91,8 @@ gulp.task('app', function(cb) {
 // Compiles Sass
 gulp.task('sass', function () {
     return gulp.src('src/scss/autocomplete.scss')
+
+        .pipe(gulp.dest('./dist/'))
         .pipe($.sass({
             includePaths: paths.sass,
             outputStyle: 'nested',
