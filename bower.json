@@ -24,4 +24,9 @@
   "dependencies": {
     "angularjs": "~1.4.2"
   }
+  "ignore":[
+    "HandsomeAutocomplete.*",
+    "gulpfile.js",
+    "README.md"
+  ]
 }
