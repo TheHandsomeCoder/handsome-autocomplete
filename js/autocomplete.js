@@ -98,6 +98,8 @@ angular.module('autocomplete', [])
 
           if($scope.onSelect)
             $scope.onSelect(suggestion);
+
+          $scope.setValid();
         }
         watching = false;
         $scope.completing = false;
@@ -337,6 +339,17 @@ angular.module('autocomplete', [])
         ngModel.$formatters.push(function(value){
             return scope.showCustomLabelForObject(value);
         });
+
+        ngModel.$parsers.push(function(value){
+            //set the validity to false until the user hits enter
+            ngModel.$setValidity('submitable', false);
+            return value;
+        });
+
+        scope.setValid = function(){
+           //set the validity to true for use of submit
+           ngModel.$setValidity('submitable', true);
+        }
     }
   };
 });
